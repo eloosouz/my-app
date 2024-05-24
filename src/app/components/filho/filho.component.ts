@@ -8,7 +8,8 @@ import { Component, OnInit, Input, OnChanges, EventEmitter, Output, SimpleChange
 
 })
 
-export class FilhoComponent implements OnInit { 
+export class FilhoComponent implements OnInit, OnChanges { 
+
     @Input()
     start = 0
     @Input()
@@ -23,12 +24,34 @@ export class FilhoComponent implements OnInit {
 
     integers: number [] = []
 
+    ngOnChanges(changes: SimpleChanges): void {
+        const start = changes['start']?.currentValue
+        const end = changes['end']?.currentValue
+        console.log('ngOnchanges')
+        console.log(start)
+        console.log(end)
+
+        if(start) {
+            this.start = start
+        }
+        if (end) {
+            this.end = end
+        }
+
+        //if(start && end) {
+            
+            this.creatNumeros()
+        //}
+        
+    }
+
     ngOnInit(): void {
         this.creatNumeros()
         
     }
 
     creatNumeros() {
+        this.numeros = []
         for (let i = this.start;i <= this.end; i++) {
             this.numeros.push(i);
         }
@@ -37,6 +60,12 @@ export class FilhoComponent implements OnInit {
 
     selecionarNumero(numero:number) {
         this.numberSelected.next(numero)
+    }
+
+    reset() {
+        this.start = 0
+        this.end = 10
+        this.creatNumeros()
     }
 
 }

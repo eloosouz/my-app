@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
+import { FilhoComponent } from "../filho/filho.component";
 
 @Component ({
     selector: 'app-pai',
@@ -9,6 +10,9 @@ import { Component } from "@angular/core";
 export class PaiComponent {
     start = 5
     end = 8
+
+    @ViewChild("filho") 
+    filho!: FilhoComponent
 
     selecionado: number | null = null 
 
@@ -23,6 +27,7 @@ export class PaiComponent {
       }
 
     reset(){
+      this.filho.reset()
         
       }
       mostrarSelecionado(numero: number) {
