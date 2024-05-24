@@ -25,5 +25,9 @@ export class PaiComponent {
     reset(){
         
       }
+      mostrarSelecionado(numero: number) {
+        console.log('numero selecionado ' + numero )
+        this.selecionado = numero
+      }
 
 }

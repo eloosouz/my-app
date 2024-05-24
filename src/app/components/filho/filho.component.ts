@@ -14,6 +14,10 @@ export class FilhoComponent implements OnInit {
     @Input()
     end = 10
 
+
+    @Output()
+    numberSelected = new EventEmitter ()
+
     numeros: number[] = []
 
 
@@ -29,6 +33,10 @@ export class FilhoComponent implements OnInit {
             this.numeros.push(i);
         }
         
+    }
+
+    selecionarNumero(numero:number) {
+        this.numberSelected.next(numero)
     }
 
 }

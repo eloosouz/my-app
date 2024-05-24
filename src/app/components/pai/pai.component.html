@@ -5,6 +5,6 @@
 <button type="button" (click)="incrementarEnd()">Incrementar end</button>
 <button type="button" (click)="reset()">Resetar</button>
 
-<p>Numero selecionado {{selecionado}}</p>
+<p>Numero selecionado: {{selecionado}}</p>
 
-<app-filho [start]="start" [end]="end"> </app-filho>
+<app-filho [start]="start" [end]="end" (numberSelected)="mostrarSelecionado($event)"> </app-filho>
